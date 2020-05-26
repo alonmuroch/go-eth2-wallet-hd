@@ -1,4 +1,4 @@
-module github.com/wealdtech/go-eth2-wallet-hd/v2
+module github.com/alonmuroch/go-eth2-wallet-hd/v2
 
 go 1.13
 
