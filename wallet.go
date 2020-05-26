@@ -39,6 +39,7 @@ type wallet struct {
 	name        string
 	version     uint
 	crypto      map[string]interface{}
+	walletIndex uint64
 	seed        []byte
 	nextAccount uint64
 	store       wtypes.Store
@@ -63,6 +64,7 @@ func (w *wallet) MarshalJSON() ([]byte, error) {
 	data["version"] = w.version
 	data["type"] = walletType
 	data["crypto"] = w.crypto
+	data["walletIndex"] = w.walletIndex
 	data["nextaccount"] = w.nextAccount
 	return json.Marshal(data)
 }
@@ -128,6 +130,15 @@ func (w *wallet) UnmarshalJSON(data []byte) error {
 	} else {
 		return errors.New("wallet crypto missing")
 	}
+	if val, exists := v["walletIndex"]; exists {
+		index, ok := val.(float64)
+		if !ok {
+			return errors.New("wallet index invalid")
+		}
+		w.walletIndex = uint64(index)
+	} else {
+		return errors.New("wallet index missing")
+	}
 	if val, exists := v["nextaccount"]; exists {
 		nextAccount, ok := val.(float64)
 		if !ok {
@@ -151,7 +162,7 @@ func (w *wallet) UnmarshalJSON(data []byte) error {
 }
 
 // CreateWalletFromSeed creates a wallet with the given name from a seed and stores it in the provided store.
-func CreateWalletFromSeed(name string, passphrase []byte, store wtypes.Store, encryptor wtypes.Encryptor, seed []byte) (wtypes.Wallet, error) {
+func CreateWalletFromSeed(name string, walletIndex uint64, passphrase []byte, store wtypes.Store, encryptor wtypes.Encryptor, seed []byte) (wtypes.Wallet, error) {
 	// First, try to open the wallet.
 	_, err := OpenWallet(name, store, encryptor)
 	if err == nil || !strings.Contains(err.Error(), "wallet not found") {
@@ -175,6 +186,7 @@ func CreateWalletFromSeed(name string, passphrase []byte, store wtypes.Store, en
 	w.id = id
 	w.name = name
 	w.crypto = crypto
+	w.walletIndex = walletIndex
 	w.nextAccount = 0
 	w.version = version
 	w.store = store
@@ -212,6 +224,7 @@ func CreateWallet(name string, passphrase []byte, store wtypes.Store, encryptor 
 	w.id = id
 	w.name = name
 	w.crypto = crypto
+	w.walletIndex = 0
 	w.nextAccount = 0
 	w.version = version
 	w.store = store
@@ -336,7 +349,7 @@ func (w *wallet) CreateAccount(name string, passphrase []byte) (wtypes.Account, 
 		return nil, errors.Wrapf(err, "failed to create account %q", name)
 	}
 
-	path := fmt.Sprintf("m/12381/3600/%d/0", accountNum)
+	path := fmt.Sprintf("m/12381/3600/%d/%d/0", w.walletIndex, accountNum)
 	privateKey, err := util.PrivateKeyFromSeedAndPath(w.seed, path)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to create private key for account %q", name)

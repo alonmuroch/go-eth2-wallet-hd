@@ -53,32 +53,32 @@ func TestUnmarshalWallet(t *testing.T) {
 		},
 		{
 			name:  "WrongID",
-			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"uuid":7,"name":"hd wallet","nextaccount":2,"type":"hierarchical deterministic","version":1}`),
+			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"uuid":7,"name":"hd wallet","nextaccount":2,"type":"hierarchical deterministic","version":1,"walletIndex":0}`),
 			err:   errors.New("wallet ID invalid"),
 		},
 		{
 			name:  "BadID",
-			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"uuid":"wadbadba-dbad-badb-adba-badbadbadbad","name":"hd wallet","nextaccount":2,"type":"hierarchical deterministic","version":1}`),
+			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"uuid":"wadbadba-dbad-badb-adba-badbadbadbad","name":"hd wallet","nextaccount":2,"type":"hierarchical deterministic","version":1,"walletIndex":0}`),
 			err:   errors.New("invalid UUID format"),
 		},
 		{
 			name:  "WrongOldID",
-			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"id":7,"name":"hd wallet","nextaccount":2,"type":"hierarchical deterministic","version":1}`),
+			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"id":7,"name":"hd wallet","nextaccount":2,"type":"hierarchical deterministic","version":1,"walletIndex":0}`),
 			err:   errors.New("wallet ID invalid"),
 		},
 		{
 			name:  "BadOldID",
-			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"id":"wadbadba-dbad-badb-adba-badbadbadbad","name":"hd wallet","nextaccount":2,"type":"hierarchical deterministic","version":1}`),
+			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"id":"wadbadba-dbad-badb-adba-badbadbadbad","name":"hd wallet","nextaccount":2,"type":"hierarchical deterministic","version":1,"walletIndex":0}`),
 			err:   errors.New("invalid UUID format"),
 		},
 		{
 			name:  "MissingName",
-			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"id":"7603a428-999c-49d0-8241-ddfd63ee143d","nextaccount":2,"type":"hierarchical deterministic","version":1}`),
+			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"id":"7603a428-999c-49d0-8241-ddfd63ee143d","nextaccount":2,"type":"hierarchical deterministic","version":1,"walletIndex":0}`),
 			err:   errors.New("wallet name missing"),
 		},
 		{
 			name:  "WrongName",
-			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"uuid":"7603a428-999c-49d0-8241-ddfd63ee143d","name":2,"nextaccount":2,"type":"hierarchical deterministic","version":1}`),
+			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"uuid":"7603a428-999c-49d0-8241-ddfd63ee143d","name":2,"nextaccount":2,"type":"hierarchical deterministic","version":1,"walletIndex":0}`),
 			err:   errors.New("wallet name invalid"),
 		},
 		{
@@ -93,46 +93,57 @@ func TestUnmarshalWallet(t *testing.T) {
 		},
 		{
 			name:  "MissingNextAccount",
-			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"uuid":"7603a428-999c-49d0-8241-ddfd63ee143d","name":"hd wallet","type":"hierarchical deterministic","version":1}`),
+			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"uuid":"7603a428-999c-49d0-8241-ddfd63ee143d","name":"hd wallet","type":"hierarchical deterministic","version":1,"walletIndex":0}`),
 			err:   errors.New("wallet next account missing"),
 		},
 		{
 			name:  "BadNextAccount",
-			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"uuid":"7603a428-999c-49d0-8241-ddfd63ee143d","name":"hd wallet","nextaccount":"bad","type":"hierarchical deterministic","version":1}`),
+			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"uuid":"7603a428-999c-49d0-8241-ddfd63ee143d","name":"hd wallet","nextaccount":"bad","type":"hierarchical deterministic","version":1,"walletIndex":0}`),
 			err:   errors.New("wallet next account invalid"),
 		},
 		{
 			name:  "MissingType",
-			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"uuid":"7603a428-999c-49d0-8241-ddfd63ee143d","name":"hd wallet","nextaccount":2,"version":1}`),
+			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"uuid":"7603a428-999c-49d0-8241-ddfd63ee143d","name":"hd wallet","nextaccount":2,"version":1,"walletIndex":0}`),
 			err:   errors.New("wallet type missing"),
 		},
 		{
 			name:  "WrongType",
-			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"uuid":"7603a428-999c-49d0-8241-ddfd63ee143d","name":"hd wallet","nextaccount":2,"type":2,"version":1}`),
+			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"uuid":"7603a428-999c-49d0-8241-ddfd63ee143d","name":"hd wallet","nextaccount":2,"type":2,"version":1,"walletIndex":0}`),
 			err:   errors.New("wallet type invalid"),
 		},
 		{
 			name:  "BadType",
-			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"uuid":"7603a428-999c-49d0-8241-ddfd63ee143d","name":"hd wallet","nextaccount":2,"type":"xd","version":1}`),
+			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"uuid":"7603a428-999c-49d0-8241-ddfd63ee143d","name":"hd wallet","nextaccount":2,"type":"xd","version":1,"walletIndex":0}`),
 			err:   errors.New(`wallet type "xd" unexpected`),
 		},
 		{
 			name:  "MissingVersion",
-			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"uuid":"7603a428-999c-49d0-8241-ddfd63ee143d","name":"hd wallet","nextaccount":2,"type":"hierarchical deterministic"}`),
+			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"uuid":"7603a428-999c-49d0-8241-ddfd63ee143d","name":"hd wallet","nextaccount":2,"type":"hierarchical deterministic","walletIndex":0}`),
 			err:   errors.New("wallet version missing"),
 		},
 		{
 			name:  "WrongVersion",
-			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"uuid":"7603a428-999c-49d0-8241-ddfd63ee143d","name":"hd wallet","nextaccount":2,"type":"hierarchical deterministic","version":false}`),
+			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"uuid":"7603a428-999c-49d0-8241-ddfd63ee143d","name":"hd wallet","nextaccount":2,"type":"hierarchical deterministic","version":false,"walletIndex":0}`),
 			err:   errors.New("wallet version invalid"),
 		},
 		{
+			name:  "WrongWalletIndex",
+			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"uuid":"7603a428-999c-49d0-8241-ddfd63ee143d","name":"hd wallet","nextaccount":2,"type":"hierarchical deterministic","version":false,"walletIndex":"z"}`),
+			err:   errors.New("wallet index invalid"),
+		},
+		{
+			name:  "MissingWalletIndex",
+			input: []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"uuid":"7603a428-999c-49d0-8241-ddfd63ee143d","name":"hd wallet","nextaccount":2,"type":"hierarchical deterministic","version":false}`),
+			err:   errors.New("wallet index missing"),
+		},
+		{
 			name:       "Good",
-			input:      []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"uuid":"7603a428-999c-49d0-8241-ddfd63ee143d","name":"hd wallet","nextaccount":2,"type":"hierarchical deterministic","version":1}`),
+			input:      []byte(`{"crypto":{"checksum":{"function":"sha256","message":"d6f4c3898450a44666538785f419a78decde53da5f3ec17e611a961e204ed617","params":{}},"cipher":{"function":"aes-128-ctr","message":"0040872e1ba675bfe39053565f7ec02bc1560b2a95670b046f1a2e17facc1b57","params":{"iv":"7cbadf81a3895dbfee3863f0e5bd19f2"}},"kdf":{"function":"pbkdf2","message":"","params":{"c":16,"dklen":32,"prf":"hmac-sha256","salt":"fcb4992215d5f84444c6f49a69e2124a899740e76caea09a1d465a71f802023a"}}},"uuid":"7603a428-999c-49d0-8241-ddfd63ee143d","name":"hd wallet","nextaccount":2,"type":"hierarchical deterministic","version":1,"walletIndex":0}`),
 			walletType: "hierarchical deterministic",
 			id:         uuid.MustParse("7603a428-999c-49d0-8241-ddfd63ee143d"),
 			version:    1,
 		},
+
 	}
 
 	for _, test := range tests {

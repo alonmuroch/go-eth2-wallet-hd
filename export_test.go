@@ -73,7 +73,7 @@ func TestWalletFromSeed(t *testing.T) {
 	seed, err := wallet.(wtypes.WalletKeyProvider).Key()
 	require.Nil(t, err)
 
-	importedWallet, err := hd.CreateWalletFromSeed("imported wallet", []byte{}, store, encryptor, seed)
+	importedWallet, err := hd.CreateWalletFromSeed("imported wallet", 0, []byte{}, store, encryptor, seed)
 	require.Nil(t, err)
 	err = importedWallet.Unlock([]byte{})
 	require.Nil(t, err)
